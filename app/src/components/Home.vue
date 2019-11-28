@@ -1,0 +1,165 @@
+<template>
+    <div>
+    <div class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <div class="nav">
+                    <img src="../assets/logo.png" class="is-pulled-left logo"/>
+                    <div @click="receive" v-if="shortAddress" class="receive is-pulled-right">
+                        <div class="short-address is-pulled-left">{{shortAddress}}</div>
+                        <img class="qr-icon is-pulled-left" src="../assets/qr.png"/>
+                    </div>
+                </div>
+            <section class="section balance-section">
+                <h1 class="title">Balance</h1>
+                <h2 class="subtitle">
+                    {{$formatDAI(balance, true)}}
+                </h2>
+            </section>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="columns is-mobile">
+            <div class="column">
+                <div class="call-to-action tile is-pulled-right">
+                    <div class="icon is-pulled-left">
+                        <img src="../assets/ether.png"/>
+                    </div>
+                    <div class="text">
+                        Swap to ETH
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div @click="send" class="call-to-action tile is-pulled-left">
+                    <div class="icon is-pulled-left">
+                        <img src="../assets/send.png"/>
+                    </div>
+                    <div class="text">
+                        Send
+                    </div>
+                </div>
+            </div>
+        </div>
+        <History/>
+    </div>
+    </div>
+</template>
+
+<script>
+import History from './History.vue'
+import Send from './Send.vue'
+import Receive from './Receive.vue'
+
+export default {
+    data () {
+        return {
+            dataKey:""
+        }
+    },
+    components:{
+        History
+    },
+    computed: {
+        shortAddress () {
+            if(this.$store.state.accounts && this.$store.state.accounts.activeAccount.length > 0) {
+                return this.$store.state.accounts.activeAccount.substring(0, 6) + "..." + this.$store.state.accounts.activeAccount.substring(37, 41)
+            }
+        },
+        balance () {
+            if(this.$store.state.drizzle && this.$store.state.drizzle.initialized && this.shortAddress) {
+                this.dataKey = this.$store.state.drizzle.drizzleInstance.contracts.Dai.methods.balanceOf.cacheCall(this.$store.state.accounts.activeAccount)
+                if(this.$store.state.contracts.instances.Dai.balanceOf[this.dataKey]) {
+                    return this.$store.state.contracts.instances.Dai.balanceOf[this.dataKey].value
+                } else {
+                    return "0"
+                }
+            } else {
+                return "0"
+            }
+        }
+    },
+    methods: {
+        send () {
+            this.$buefy.modal.open({
+                parent: this,
+                component: Send,
+                hasModalCard: true,
+            })
+        },
+        receive () {
+            this.$buefy.modal.open({
+                parent: this,
+                component: Receive,
+                hasModalCard: true,
+            })            
+        }
+    }
+}
+</script>
+
+<style scoped>
+.hero-body {
+    height: 220px;
+    background-color: #8e38b5;
+}
+.hero {
+    margin-bottom:15px;
+}
+.logo {
+    width: 300px;
+}
+.short-address {
+    color:white;
+    font-size:15px;
+}
+.qr-icon {
+    margin-left:10px;
+}
+.balance-section .title {
+    color:rgba(249, 250, 251, 0.8);
+    font-size: 14px;
+    line-height:20px;
+    font-weight:700;
+    height:29px;
+}
+.balance-section .subtitle {
+    color:rgba(249, 250, 251, 0.8);
+    font-size: 25px;
+    line-height:20px;
+    font-weight:700;
+    height:29px;
+}
+.call-to-action {
+    padding-top:20px;
+    width:168px;
+    height:59px;
+    box-shadow: 0 2px 4px rgba(10, 10, 10, 0.08);
+    border-radius:30px;
+    cursor:pointer;
+}
+.call-to-action .text {
+    width:100%;
+    font-size:18px;
+    color: #8e38b5;
+    text-align:center;
+}
+.call-to-action .icon {
+    margin-left:20px;
+}
+.call-to-action .icon img {
+    height:28px;
+}
+.nav {
+    padding-bottom:25px;
+}
+.receive {
+    cursor:pointer;
+}
+@media only screen and (max-width: 768px) {
+  .logo {
+      width:180px;
+  }
+}
+</style>

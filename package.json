@@ -1,0 +1,25 @@
+{
+  "name": "gasless",
+  "version": "0.0.1",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Mosendo",
+    "email": "nour@mosendo.com",
+    "url": "http://github.com/depfi/Gasless"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "openzeppelin-solidity": "^2.1.1",
+    "truffle-hdwallet-provider-privkey": "^1.0.3",
+    "truffle-privatekey-provider": "^1.3.0"
+  },
+  "devDependencies": {}
+}
