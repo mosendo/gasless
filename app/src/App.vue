@@ -34,7 +34,6 @@ export default {
 body, html {
   margin:0px;
   background:#f9fafb;
-  height:100%;
 }
 * {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";

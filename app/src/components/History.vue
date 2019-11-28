@@ -3,7 +3,9 @@
             <div v-for="(tx, index) in sortedTxs" :key="index" @click="openInEtherscan(tx.txHash)" class="tx row is-half">
                 <div class="columns is-mobile is-centered">
                     <div class="column is-narrow">
-                        <img class="icon" src="../assets/tx.png"/>
+                        <div class="icon-wrapper">
+                            <img class="icon" src="../assets/tx.svg"/>
+                        </div>
                     </div>
                     <div class="column is-wide address">
                         {{shortAddress(tx.counterparty)}}
@@ -96,8 +98,15 @@ export default {
 }
 </script>
 <style scoped>
-.icon {
+.icon-wrapper {
     height:50px;
+    width:50px;
+    padding: 12px;
+    border-radius: 50px;
+    box-shadow: 0 2px 4px rgba(10, 10, 10, 0.08);
+}
+.icon {
+    height:100%;
     width:auto;
 }
 .address {
