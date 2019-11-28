@@ -22,7 +22,7 @@
     <div class="container">
         <div class="columns is-mobile">
             <div class="column">
-                <div class="call-to-action tile is-pulled-right">
+                <div @click="swap" class="call-to-action tile is-pulled-right">
                     <div class="icon is-pulled-left">
                         <img src="../assets/ether.png"/>
                     </div>
@@ -50,6 +50,7 @@
 <script>
 import History from './History.vue'
 import Send from './Send.vue'
+import Swap from './Swap.vue'
 import Receive from './Receive.vue'
 
 export default {
@@ -85,6 +86,13 @@ export default {
             this.$buefy.modal.open({
                 parent: this,
                 component: Send,
+                hasModalCard: true,
+            })
+        },
+        swap () {
+            this.$buefy.modal.open({
+                parent: this,
+                component: Swap,
                 hasModalCard: true,
             })
         },
