@@ -80,7 +80,14 @@ function approve (from, web3) {
                         sig
                     }
                 })
-                resolve(res.data.result)
+                const interval = setInterval(async ()=>{
+                    const receipt = await provider.getTransactionReceipt(res.data.result)
+                    if(receipt) {
+                        clearInterval(interval);
+                        if(receipt.status === 1) resolve()
+                        else reject("Transaction reverted: "+JSON.stringify(receipt))
+                    }
+                },3000)
             } catch(e) {
                 reject(e.response.data.errorMessage)
             }

@@ -26,7 +26,7 @@ export default {
     },
     computed: {
         sortedTxs () {
-            return JSON.parse(JSON.stringify(this.txs))
+            return [...new Set(this.txs)] // Removing duplicates from view
                 .sort((a, b) => b.block - a.block);
         }
     },
