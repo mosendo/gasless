@@ -1,0 +1,20 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" width="5" height="2" fill="#FFA800"/>
+<rect width="2" height="6" fill="#FFA800"/>
+<rect x="18" width="5" height="2" fill="#FFA800"/>
+<rect x="22" width="2" height="6" fill="#FFA800"/>
+<rect x="1" y="22" width="5" height="2" fill="#FFA800"/>
+<rect y="18" width="2" height="6" fill="#FFA800"/>
+<rect x="18" y="22" width="5" height="2" fill="#FFA800"/>
+<rect x="22" y="18" width="2" height="6" fill="#FFA800"/>
+<path d="M12.3645 0L12.2036 0.546763V16.4125L12.3645 16.5731L19.7292 12.2199L12.3645 0Z" fill="white"/>
+<path d="M12.3647 0L5 12.2199L12.3647 16.5732V8.8724V0Z" fill="white"/>
+<path d="M12.3646 17.9675L12.2739 18.078V23.7298L12.3646 23.9946L19.7337 13.6165L12.3646 17.9675Z" fill="white"/>
+<path d="M12.3647 23.9946V17.9675L5 13.6165L12.3647 23.9946Z" fill="white"/>
+<path opacity="0.8" d="M19.7295 12.2199L12.3647 16.5731V0L19.7295 12.2199Z" fill="#FFA800"/>
+<path opacity="0.6" d="M12.3647 0L5 12.2199L12.3647 16.5732V8.8724V0Z" fill="#FFA800"/>
+<path opacity="0.8" d="M19.7338 13.6164L12.3647 23.9945V17.9675L19.7338 13.6164Z" fill="#FFA800"/>
+<path opacity="0.6" d="M12.3647 23.9946V17.9675L5 13.6165L12.3647 23.9946Z" fill="#FFA800"/>
+<path d="M12.3647 16.5731L19.7294 12.2199L12.3647 8.87244V16.5731Z" fill="#FFA800"/>
+<path opacity="0.7" d="M5 12.22L12.3646 16.5732V8.87253L5 12.22Z" fill="#FFA800"/>
+</svg>
