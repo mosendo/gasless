@@ -26,8 +26,17 @@ export default {
     },
     computed: {
         sortedTxs () {
-            return [...new Set(this.txs)] // Removing duplicates from view
-                .sort((a, b) => b.block - a.block);
+            let keys = {}
+            return this.txs
+                .filter((v)=>{
+                    if(keys[v.counterparty+v.txHash]){
+                        return false
+                    } else {
+                        keys[v.counterparty+v.txHash] = true
+                        return true
+                    }
+                })
+                .sort((a,b) => b.block - a.block)
         }
     },
     methods: {
