@@ -118,6 +118,7 @@ function send (from, to, value, fee, gasprice, web3, {sig, deadline, nonce} = {}
             var message = {
                 relayer: RELAYER_ADDRESS,
                 to,
+                value,
                 fee,
                 gasprice,
                 nonce,

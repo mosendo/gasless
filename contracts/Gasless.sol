@@ -62,7 +62,7 @@ contract Gasless {
     }
 
     function send(address to, uint value, uint nonce, uint fee, uint deadline, uint8 v, bytes32 r, bytes32 s) public onlyRelayer {
-        require(block.number <= deadline, "Deadline expired");
+        require(block.timestamp <= deadline, "Deadline expired");
         bytes32 digest = keccak256(abi.encodePacked(
                 "\x19\x01",
                 DOMAIN_SEPARATOR,
@@ -92,7 +92,7 @@ contract Gasless {
         bytes32 r,
         bytes32 s
     ) public onlyRelayer {
-        require(block.number <= deadline, "Deadline expired");
+        require(block.timestamp <= deadline, "Deadline expired");
         bytes32 digest = keccak256(abi.encodePacked(
                 "\x19\x01",
                 DOMAIN_SEPARATOR,
