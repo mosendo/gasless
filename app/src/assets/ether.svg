@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="28px" viewBox="0 0 18 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>eth</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Layout-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-02---01-Copy-3" transform="translate(-647.000000, -300.000000)" fill-rule="nonzero">
+            <g id="Group-6" transform="translate(448.000000, 284.000000)">
+                <g id="Group-10" transform="translate(188.000000, 0.000000)">
+                    <g id="Group-7" transform="translate(11.000000, 16.000000)">
+                        <g id="eth">
+                            <polygon id="Path" fill="#662882" opacity="0.8" points="17.1841833 14.25655 8.59205667 19.3352833 8.59205667 0"></polygon>
+                            <polygon id="Path" fill="#662882" opacity="0.6" points="8.59217333 0 0 14.25655 8.59217333 19.3354 8.59217333 10.3511333"></polygon>
+                            <polygon id="Path" fill="#B368C7" opacity="0.8" points="17.1893167 15.8859167 8.59205667 27.9937 8.59205667 20.9620833"></polygon>
+                            <polygon id="Path" fill="#662882" opacity="0.6" points="8.59217333 27.9937 8.59217333 20.9620833 0 15.8859167"></polygon>
+                            <polygon id="Path" fill="#B368C7" points="8.59205667 19.3351667 17.1840667 14.2564333 8.59205667 10.3510283"></polygon>
+                            <polygon id="Path" fill="#B368C7" opacity="0.7" points="0 14.2566667 8.59203333 19.3354 8.59203333 10.35132"></polygon>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

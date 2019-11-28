@@ -4,10 +4,10 @@
         <div class="hero-body">
             <div class="container">
                 <div class="nav">
-                    <img src="../assets/logo.png" class="is-pulled-left logo"/>
+                    <img src="../assets/gasless-logo.svg" class="is-pulled-left logo"/>
                     <div @click="receive" v-if="shortAddress" class="receive is-pulled-right">
                         <div class="short-address is-pulled-left">{{shortAddress}}</div>
-                        <img class="qr-icon is-pulled-left" src="../assets/qr.png"/>
+                        <img class="qr-icon is-pulled-left" src="../assets/qr.svg"/>
                     </div>
                 </div>
             <section class="section balance-section">
@@ -19,12 +19,12 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="tx-history container">
         <div class="columns is-mobile">
             <div class="column">
                 <div class="call-to-action tile is-pulled-right">
                     <div class="icon is-pulled-left">
-                        <img src="../assets/ether.png"/>
+                        <img src="../assets/ether.svg"/>
                     </div>
                     <div class="text">
                         Swap to ETH
@@ -34,7 +34,7 @@
             <div class="column">
                 <div @click="send" class="call-to-action tile is-pulled-left">
                     <div class="icon is-pulled-left">
-                        <img src="../assets/send.png"/>
+                        <img src="../assets/send.svg"/>
                     </div>
                     <div class="text">
                         Send
@@ -100,6 +100,9 @@ export default {
 </script>
 
 <style scoped>
+.tx-history {
+    margin: 0 20px;
+}
 .hero-body {
     height: 220px;
     background-color: #8e38b5;
@@ -109,6 +112,7 @@ export default {
 }
 .logo {
     width: 300px;
+    margin-bottom: 30px;
 }
 .short-address {
     color:white;
@@ -159,7 +163,24 @@ export default {
 }
 @media only screen and (max-width: 768px) {
   .logo {
-      width:180px;
+      width:285px;
+  }
+  .balance-section {
+    padding-left: 0;
+  }
+  .call-to-action {
+    padding-top:10px;
+    width:127px;
+    height:40px;
+  }
+  .call-to-action .text {
+    font-size:14px;
+  }
+  .call-to-action .icon {
+    margin-left:15px;
+  }
+  .call-to-action .icon img {
+    height:20px;
   }
 }
 </style>
