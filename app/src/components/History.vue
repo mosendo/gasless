@@ -18,7 +18,7 @@
     </div>
 </template>
 <script>
-import { NETWORK_NAME, RELAYER_ADDRESS } from "../utils/constants"
+import { NETWORK_NAME, RELAYER_ADDRESS, EXCHANGE_CONTRACT } from "../utils/constants"
 
 export default {
     data () {
@@ -44,6 +44,7 @@ export default {
     methods: {
         shortAddress (address) {
             if(address.toLowerCase() === RELAYER_ADDRESS.toLowerCase()) return "Transaction Fee"
+            else if(address.toLowerCase() === EXCHANGE_CONTRACT.toLowerCase()) return "Swap to ETH"
             else return address.substring(0, 6) + "..." + address.substring(37, 41)
         },
         openInEtherscan (txHash) {

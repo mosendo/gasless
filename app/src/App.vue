@@ -7,25 +7,12 @@
 <script>
 import { mapGetters } from 'vuex'
 import Home from './components/Home'
-import Providers from './components/Providers'
 
 export default {
   name: 'app',
   computed: mapGetters('drizzle', ['isDrizzleInitialized']),
   components:{
     Home
-  },
-  created() {
-    if(window.web3 && !window.ethereum.isMetaMask) {
-      this.$initDrizzle()
-    } else {
-      this.$buefy.modal.open({
-        parent: this,
-        component: Providers,
-        hasModalCard: true,
-        canCancel:false
-      })
-    }
   }
 }
 </script>
@@ -34,6 +21,10 @@ export default {
 body, html {
   margin:0px;
   background:#f9fafb;
+  height: 100%;
+}
+body {
+  position: relative;
 }
 * {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";

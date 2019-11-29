@@ -34,6 +34,7 @@
 </template>
 <script>
 import BN from 'bignumber.js'
+import { NETWORK_NAME } from "../utils/constants"
 
 export default {
     data () {
@@ -99,13 +100,18 @@ export default {
             try {
                 const bigAmount = new BN(this.amount).shiftedBy(18).toFixed()
                 const txHash = await this.$relayer.send(this.$store.state.accounts.activeAccount, this.recipient, bigAmount, this.fee, this.gasprice, this.$store.state.drizzle.drizzleInstance.web3);
-                console.log("tx hash:", txHash)
+                this.openInEtherscan(txHash);
                 this.$parent.close()
                 this.$buefy.toast.open('Transaction submitted successfully!')
             } catch(e) {
                 console.log(e)
                 this.loading = false
             }
+        },
+        openInEtherscan (txHash) {
+            const network = NETWORK_NAME !== "mainnet"? (NETWORK_NAME + "."): ""
+            var win = window.open('https://'+network+'etherscan.io/tx/'+txHash, '_blank');
+            win.focus();
         }
     },
     async created () {
@@ -115,7 +121,7 @@ export default {
     }
 }
 </script>
-<style>
+<style scoped>
 .fee {
     color: #667380 !important;
     font-size: 14px !important;

@@ -9,6 +9,9 @@
                         <div class="short-address is-pulled-left">{{shortAddress}}</div>
                         <img class="qr-icon is-pulled-left" src="../assets/qr.svg"/>
                     </div>
+                    <b-button class="connect-button" v-else @click="connectWeb3" outlined>
+                        CONNECT
+                    </b-button>
                 </div>
             <section class="section balance-section">
                 <h1 class="title">Balance</h1>
@@ -83,18 +86,26 @@ export default {
     },
     methods: {
         send () {
-            this.$buefy.modal.open({
-                parent: this,
-                component: Send,
-                hasModalCard: true,
-            })
+            if(this.$store.state.drizzle.initialized) {
+                this.$buefy.modal.open({
+                    parent: this,
+                    component: Send,
+                    hasModalCard: true,
+                })
+            } else {
+                this.connectToast()
+            }
         },
         swap () {
-            this.$buefy.modal.open({
-                parent: this,
-                component: Swap,
-                hasModalCard: true,
-            })
+            if(this.$store.state.drizzle.initialized) {
+                this.$buefy.modal.open({
+                    parent: this,
+                    component: Swap,
+                    hasModalCard: true,
+                })
+            } else {
+                this.connectToast()
+            }
         },
         receive () {
             this.$buefy.modal.open({
@@ -102,15 +113,19 @@ export default {
                 component: Receive,
                 hasModalCard: true,
             })            
+        },
+        connectWeb3 () {
+            this.$initDrizzle()
+        },
+        connectToast() {
+            this.$buefy.toast.open('Please connect your Web3 provider first.')
         }
     }
 }
 </script>
 
 <style scoped>
-.tx-history {
-    margin: 0 20px;
-}
+
 .hero-body {
     height: 220px;
     background-color: #8e38b5;
@@ -169,9 +184,16 @@ export default {
 .receive {
     cursor:pointer;
 }
+.connect-button {
+    background: transparent;
+    color: white;
+    font-size: 12px;
+    float:right;
+    width:150px;
+}
 @media only screen and (max-width: 768px) {
   .logo {
-      width:285px;
+      width:220px;
   }
   .balance-section {
     padding-left: 0;
@@ -189,6 +211,13 @@ export default {
   }
   .call-to-action .icon img {
     height:20px;
+  }
+  .connect-button {
+    width:100px;
+  }
+  .short-address {
+    cursor:pointer;
+    font-size:13px;
   }
 }
 </style>
