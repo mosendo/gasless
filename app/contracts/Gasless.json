@@ -11419,6 +11419,26 @@
       },
       "links": {},
       "address": "0xc2bC100E03196B26D41a3C1A75854B1b9C3e0335"
+    },
+    "1": {
+      "events": {
+        "0x4108c8d727bf04fda7189ec8e40fd3af4c05ef3fc22240c756db2ab061b1de0e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "newRelayer",
+              "type": "address"
+            }
+          ],
+          "name": "RelayerChange",
+          "type": "event",
+          "signature": "0x4108c8d727bf04fda7189ec8e40fd3af4c05ef3fc22240c756db2ab061b1de0e"
+        }
+      },
+      "links": {},
+      "address": "0xB19B650354eeAf35Ea1521238B2925D77D0cfb5b"
     }
   },
   "schemaVersion": "3.0.16",

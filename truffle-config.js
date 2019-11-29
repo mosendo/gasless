@@ -30,6 +30,11 @@ module.exports = {
       provider: new PrivateKeyProvider(privateKey, "https://kovan.infura.io/27e484dcd9e3efcfd25a83a78777cdf1/"),
       network_id: 42,
       skipDryRun: true
+    },
+    live: {
+      provider: new PrivateKeyProvider(privateKey, "https://mainnet.infura.io/27e484dcd9e3efcfd25a83a78777cdf1/"),
+      network_id: 1,
+      skipDryRun: true
     }
   }
 };
