@@ -86,7 +86,7 @@ export default {
     },
     methods: {
         send () {
-            if(this.$store.state.drizzle.initialized) {
+            if(this.$store.state.drizzle && this.$store.state.drizzle.initialized) {
                 this.$buefy.modal.open({
                     parent: this,
                     component: Send,
@@ -97,7 +97,7 @@ export default {
             }
         },
         swap () {
-            if(this.$store.state.drizzle.initialized) {
+            if(this.$store.state.drizzle && this.$store.state.drizzle.initialized) {
                 this.$buefy.modal.open({
                     parent: this,
                     component: Swap,

@@ -117,7 +117,7 @@ async function getSwapRate (dai_sold, web3) {
     return (await contract.getTokenToEthInputPrice(dai_sold)).toString();
 }
 
-function swap(from, dai_sold, min_eth, fee, gasprice, web3, {sig, deadline, nonce}) {
+function swap(from, dai_sold, min_eth, fee, gasprice, web3, {sig, deadline, nonce} = {}) {
     return new Promise(async (resolve, reject) => {
         if(!deadline) deadline = Math.floor(Date.now() / 1000) + DEADLINE;
         if(!nonce) nonce = await getNonce(from);

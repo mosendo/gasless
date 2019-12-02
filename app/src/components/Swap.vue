@@ -62,7 +62,7 @@ export default {
         },
         rate () {
             if(this.receivedWei.length !== 0 && this.amount.length !== 0) {
-                return BN(this.amount).shiftedBy(18).div(this.receivedWei).toFixed(2) + " DAI/ETH"
+                return BN(this.amount).shiftedBy(18).minus(this.fee).div(this.receivedWei).toFixed(2) + " DAI/ETH"
             }
         },
         daiFee () {
