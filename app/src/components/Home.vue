@@ -24,7 +24,7 @@
     </div>
     <div class="tx-history container">
         <div class="columns is-mobile">
-            <div class="column">
+            <!--<div class="column">
                 <div @click="swap" class="call-to-action tile is-pulled-right">
                     <div class="icon is-pulled-left">
                         <img src="../assets/ether.svg"/>
@@ -33,10 +33,10 @@
                         Swap to ETH
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="column">
-                <div @click="send" class="call-to-action tile is-pulled-left">
-                    <div class="icon is-pulled-left">
+                <div @click="send" class="call-to-action tile">
+                    <div class="icon">
                         <img src="../assets/send.svg"/>
                     </div>
                     <div class="text">
@@ -159,6 +159,7 @@ export default {
     height:29px;
 }
 .call-to-action {
+    margin:auto;
     padding-top:20px;
     width:168px;
     height:59px;
@@ -204,6 +205,8 @@ export default {
     height:40px;
   }
   .call-to-action .text {
+    position:relative;
+    bottom:30px;
     font-size:14px;
   }
   .call-to-action .icon {
