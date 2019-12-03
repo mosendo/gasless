@@ -47,6 +47,11 @@
         </div>
         <History/>
     </div>
+    <div class="foot">
+        <p><a href="https://medium.com/@_TomHoward/gasless-by-mosendo-8e5e369c0278
+">About Gasless</a> | <a href="https://angel.co/company/mosendo/jobs">We're Hiring!</a> | <a href="https://github.com/mosendo/gasless">Github</a> | <a href="https://twitter.com/GetMosendo">Twitter</a></p>
+        <p><em><small>Disclaimer: this code is in beta and has not been audited. Use at your own risk.</small></em></p>
+    </div>
     </div>
 </template>
 
@@ -125,7 +130,10 @@ export default {
 </script>
 
 <style scoped>
-
+.tx-history {
+    margin: 0 20px;
+    background:#f9fafb;
+}
 .hero-body {
     height: 220px;
     background-color: #8e38b5;
@@ -191,6 +199,14 @@ export default {
     font-size: 12px;
     float:right;
     width:150px;
+}
+.foot {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background:#f9fafb;
 }
 @media only screen and (max-width: 768px) {
   .logo {
