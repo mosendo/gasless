@@ -1,21 +1,25 @@
 <template>
-    <div class="rows is-mobile is-centered is-half">
-            <div v-for="(tx, index) in sortedTxs" :key="index" @click="openInEtherscan(tx.txHash)" class="tx row is-half">
-                <div class="columns is-mobile is-centered">
-                    <div class="column is-narrow">
-                        <div class="icon-wrapper">
-                            <img class="icon" src="../assets/tx.svg"/>
+    <section class="section">
+        <div class="container">
+            <div class="rows is-mobile is-centered is-half">
+                <div v-for="(tx, index) in sortedTxs" :key="index" @click="openInEtherscan(tx.txHash)" class="tx row is-half">
+                    <div class="columns is-mobile is-centered">
+                        <div class="column is-narrow">
+                            <div class="icon-wrapper">
+                                <img class="icon" src="../assets/tx.svg"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="column is-wide address">
-                        {{shortAddress(tx.counterparty)}}
-                    </div>
-                    <div class="column is-narrow amount">
-                        {{tx.balanceSign}}{{$formatDAI(tx.amount, true)}}
+                        <div class="column is-wide address">
+                            {{shortAddress(tx.counterparty)}}
+                        </div>
+                        <div class="column is-narrow amount">
+                            {{tx.balanceSign}}{{$formatDAI(tx.amount, true)}}
+                        </div>
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
+    </section>
 </template>
 <script>
 import { NETWORK_NAME, RELAYER_ADDRESS, EXCHANGE_CONTRACT } from "../utils/constants"
@@ -99,6 +103,9 @@ export default {
 }
 </script>
 <style scoped>
+.container {
+    max-width: 450px;
+}
 .icon-wrapper {
     height:50px;
     width:50px;

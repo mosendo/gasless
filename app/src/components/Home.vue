@@ -1,57 +1,66 @@
 <template>
     <div>
-    <div class="hero">
-        <div class="hero-body">
+        <div class="hero">
+            <div class="hero-body">
+                <div class="container">
+                    <div class="level">
+                        <div class="logo-wrapper level-left">
+                            <span class="fire">🔥</span>
+                            <img src="../assets/gasless-logo.svg" class="is-pulled-left logo"/>
+                        </div>
+                        <div class="level-right">
+                            <div @click="receive" v-if="shortAddress" class="receive is-pulled-right">
+                                <div class="short-address is-pulled-left">{{shortAddress}}</div>
+                                <img class="qr-icon is-pulled-left" src="../assets/qr.svg"/>
+                            </div>
+                            <b-button class="connect-button" v-else @click="connectWeb3" outlined>
+                                CONNECT
+                            </b-button>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="balance-section">
+                        <h1 class="title">Balance</h1>
+                        <h2 class="subtitle">
+                            {{$formatDAI(balance, true)}}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="section">
             <div class="container">
-                <div class="nav">
-                    <img src="../assets/gasless-logo.svg" class="is-pulled-left logo"/>
-                    <div @click="receive" v-if="shortAddress" class="receive is-pulled-right">
-                        <div class="short-address is-pulled-left">{{shortAddress}}</div>
-                        <img class="qr-icon is-pulled-left" src="../assets/qr.svg"/>
-                    </div>
-                    <b-button class="connect-button" v-else @click="connectWeb3" outlined>
-                        CONNECT
-                    </b-button>
-                </div>
-            <section class="section balance-section">
-                <h1 class="title">Balance</h1>
-                <h2 class="subtitle">
-                    {{$formatDAI(balance, true)}}
-                </h2>
-            </section>
-            </div>
-        </div>
-    </div>
-    <div class="tx-history container">
-        <div class="columns is-mobile">
-            <!--<div class="column">
-                <div @click="swap" class="call-to-action tile is-pulled-right">
-                    <div class="icon is-pulled-left">
-                        <img src="../assets/ether.svg"/>
-                    </div>
-                    <div class="text">
-                        Swap to ETH
-                    </div>
-                </div>
-            </div>-->
-            <div class="column">
-                <div @click="send" class="call-to-action tile">
-                    <div class="icon">
-                        <img src="../assets/send.svg"/>
-                    </div>
-                    <div class="text">
-                        Send
+                <div class="columns is-mobile">
+                    <!--<div class="column">
+                        <div @click="swap" class="call-to-action tile is-pulled-right">
+                            <div class="icon is-pulled-left">
+                                <img src="../assets/ether.svg"/>
+                            </div>
+                            <div class="text">
+                                Swap to ETH
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="column">
+                        <div @click="send" class="call-to-action tile">
+                            <div class="icon">
+                                <img src="../assets/send.svg"/>
+                            </div>
+                            <div class="text">
+                                Send
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         <History/>
-    </div>
-    <div class="foot">
-        <p><a href="https://medium.com/@_TomHoward/gasless-by-mosendo-8e5e369c0278
-">About Gasless</a> | <a href="https://angel.co/company/mosendo/jobs">We're Hiring!</a> | <a href="https://github.com/mosendo/gasless">Github</a> | <a href="https://twitter.com/GetMosendo">Twitter</a></p>
-        <p><em><small>Disclaimer: this code is in beta and has not been audited. Use at your own risk.</small></em></p>
-    </div>
+        <footer class="footer">
+            <p><a href="https://medium.com/@_TomHoward/gasless-by-mosendo-8e5e369c0278
+    ">About Gasless</a> | <a href="https://angel.co/company/mosendo/jobs">We're Hiring!</a> | <a href="https://github.com/mosendo/gasless">Github</a> | <a href="https://twitter.com/GetMosendo">Twitter</a></p>
+            <p><em><small>Disclaimer: this code is in beta and has not been audited. Use at your own risk.</small></em></p>
+        </footer>
     </div>
 </template>
 
@@ -130,20 +139,31 @@ export default {
 </script>
 
 <style scoped>
-.tx-history {
-    margin: 0 20px;
-    background:#f9fafb;
+.container {
+    max-width: 450px;
+}
+.section {
+    padding: 1rem 1.5rem;
 }
 .hero-body {
-    height: 220px;
+    height: 250px;
     background-color: #8e38b5;
 }
 .hero {
     margin-bottom:15px;
 }
+.logo-wrapper {
+    margin-left: -32px;
+}
+.fire {
+    font-size: 32px;
+    float: left;
+    position: relative;
+    left: -8px;
+    top: -16px;
+}
 .logo {
-    width: 300px;
-    margin-bottom: 30px;
+    width: 130px;
 }
 .short-address {
     color:white;
@@ -151,6 +171,9 @@ export default {
 }
 .qr-icon {
     margin-left:10px;
+}
+.balance-section {
+    margin-top: 2rem;
 }
 .balance-section .title {
     color:rgba(249, 250, 251, 0.8);
@@ -200,7 +223,7 @@ export default {
     float:right;
     width:150px;
 }
-.foot {
+.footer {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -209,34 +232,34 @@ export default {
     background:#f9fafb;
 }
 @media only screen and (max-width: 768px) {
-  .logo {
-      width:220px;
-  }
-  .balance-section {
-    padding-left: 0;
-  }
-  .call-to-action {
-    padding-top:10px;
-    width:127px;
-    height:40px;
-  }
-  .call-to-action .text {
-    position:relative;
-    bottom:30px;
-    font-size:14px;
-  }
-  .call-to-action .icon {
-    margin-left:15px;
-  }
-  .call-to-action .icon img {
-    height:20px;
-  }
-  .connect-button {
-    width:100px;
-  }
-  .short-address {
-    cursor:pointer;
-    font-size:13px;
-  }
+    .level {
+        display: flex;
+    }
+    .logo-wrapper {
+        margin-left: 0px;
+    }
+    .call-to-action {
+        padding-top:10px;
+        width:127px;
+        height:40px;
+    }
+    .call-to-action .text {
+        position:relative;
+        bottom:30px;
+        font-size:14px;
+    }
+    .call-to-action .icon {
+        margin-left:15px;
+    }
+    .call-to-action .icon img {
+        height:20px;
+    }
+    .connect-button {
+        width:100px;
+    }
+    .short-address {
+        cursor:pointer;
+        font-size:13px;
+    }
 }
 </style>
