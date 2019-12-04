@@ -93,7 +93,7 @@ export default {
     },
     methods: {
         max() {
-            this.amount = this.$formatDAI(this.$parent.$parent.balance, false)
+            this.amount = this.$formatDAI(this.$parent.$parent.balance, false, undefined)
         },
         async send () {
             this.loading = true

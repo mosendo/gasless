@@ -66,10 +66,10 @@ function initDrizzle (customProvider) {
   Vue.use(drizzleVuePlugin, { store, drizzleOptions })
 }
 
-function formatDAI (amount, showDAI) {
+function formatDAI (amount, showDAI, decimals = 2) {
   amount = new BN(amount).shiftedBy(-18).toFixed()
   if(amount.includes(".")) {
-    amount = new BN(amount).toFormat(2)
+    amount = new BN(amount).toFormat(decimals)
   }
   return amount + (showDAI? " DAI":"")
 }
