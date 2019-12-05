@@ -3,6 +3,8 @@
 Gasless is a non-custodial wallet for MCD Dai native meta-transactions.
 It leverages Dai's new approve by signature feature (aka permit function).
 
+Read more about the making of Gasless: https://medium.com/mosendo/gasless-by-mosendo-3030f5e99099
+
 This repo contains contracts and the frontend of the Gasless wallet
 
 ## Truffle Contracts
