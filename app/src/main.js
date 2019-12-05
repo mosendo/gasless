@@ -10,6 +10,21 @@ import BN from 'bignumber.js'
 import VueQrcode from '@chenfengyuan/vue-qrcode';
 import relayer from './utils/relayer'
 import { CHAIN_ID, DAI_CONTRACT } from './utils/constants'
+import * as firebase from "firebase/app";
+import "firebase/analytics";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDyA6jbDeCzFvg68zgOQIBNraFkuqYwLvE",
+  authDomain: "gasless-20d13.firebaseapp.com",
+  databaseURL: "https://gasless-20d13.firebaseio.com",
+  projectId: "gasless-20d13",
+  storageBucket: "gasless-20d13.appspot.com",
+  messagingSenderId: "463586167757",
+  appId: "1:463586167757:web:cb18e110b101b32301d284",
+  measurementId: "G-8WCWLRRKZZ"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 Vue.component(VueQrcode.name, VueQrcode);
 // Todo: Update this when publishing
