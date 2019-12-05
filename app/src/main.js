@@ -1,15 +1,17 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import App from './App.vue'
-import storeObj from './store'
-import { Modal, Button, Field, Input, Toast } from 'buefy'
-import drizzleVuePlugin from '@drizzle/vue-plugin'
-import Gasless from '../contracts/Gasless.json';
-import Dai from '../contracts/Dai.json';
-import BN from 'bignumber.js'
-import VueQrcode from '@chenfengyuan/vue-qrcode';
-import relayer from './utils/relayer'
-import { CHAIN_ID, DAI_CONTRACT } from './utils/constants'
+import Vue from "vue";
+import Vuex from "vuex";
+import App from "./App.vue";
+import storeObj from "./store";
+import { Modal, Button, Field, Input, Toast } from "buefy";
+import drizzleVuePlugin from "@drizzle/vue-plugin";
+import Gasless from "../contracts/Gasless.json";
+import Dai from "../contracts/Dai.json";
+import BN from "bignumber.js";
+import Web3Connect from "web3connect";
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import VueQrcode from "@chenfengyuan/vue-qrcode";
+import relayer from "./utils/relayer";
+import { CHAIN_ID, DAI_CONTRACT } from "./utils/constants";
 import * as firebase from "firebase/app";
 import "firebase/analytics";
 
@@ -31,37 +33,60 @@ Vue.component(VueQrcode.name, VueQrcode);
 // import drizzleVuePlugin from '@drizzle/vue-plugin'
 //
 
-Vue.use(Modal)
-Vue.use(Button)
-Vue.use(Field)
-Vue.use(Input)
-Vue.use(Toast)
-Vue.use(Vuex)
-const store = new Vuex.Store(storeObj)
+Vue.use(Modal);
+Vue.use(Button);
+Vue.use(Field);
+Vue.use(Input);
+Vue.use(Toast);
+Vue.use(Vuex);
+const store = new Vuex.Store(storeObj);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-function initDrizzle (customProvider) {
+const web3Connect = new Web3Connect.Core({
+  network: "mainnet",
+  providerOptions: {
+    walletconnect: {
+      package: WalletConnectProvider,
+      options: {
+        infuraId: process.env.INFURA_ACCESS_KEY
+      }
+    }
+  }
+});
 
-  let url = "wss://mainnet.infura.io/ws/v3/" + process.env.INFURA_ACCESS_KEY
+web3Connect.on("connect", provider => {
+  initDrizzle(provider);
+});
 
-  if(customProvider) {
+web3Connect.on("close", () => {
+  console.log("Web3Connect Modal Closed");
+});
+
+function onConnect() {
+  web3Connect.toggleModal();
+}
+
+function initDrizzle(customProvider) {
+  let url = "wss://mainnet.infura.io/ws/v3/" + process.env.INFURA_ACCESS_KEY;
+
+  if (customProvider) {
     delete window.ethereum;
     delete window.web3;
   }
 
   Dai.networks = {
-    [CHAIN_ID]:{
+    [CHAIN_ID]: {
       address: DAI_CONTRACT
     }
-  }
+  };
 
   const drizzleOptions = {
     web3: {
       customProvider,
       block: true,
       fallback: {
-        type: 'ws',
+        type: "ws",
         url
       }
     },
@@ -75,30 +100,31 @@ function initDrizzle (customProvider) {
     //     }
     //   ]
     // },
-    syncAlways:true
-  }
+    syncAlways: true
+  };
 
-  Vue.use(drizzleVuePlugin, { store, drizzleOptions })
+  Vue.use(drizzleVuePlugin, { store, drizzleOptions });
 }
 
-function formatDAI (amount, showDAI, decimals = 2) {
-  amount = new BN(amount).shiftedBy(-18).toFixed()
-  if(amount.includes(".")) {
-    amount = new BN(amount).toFormat(decimals)
+function formatDAI(amount, showDAI, decimals = 2) {
+  amount = new BN(amount).shiftedBy(-18).toFixed();
+  if (amount.includes(".")) {
+    amount = new BN(amount).toFormat(decimals);
   }
-  return amount + (showDAI? " DAI":"")
+  return amount + (showDAI ? " DAI" : "");
 }
 
-var isAddress = function (address) {
+var isAddress = function(address) {
   return /^(0x)?[0-9a-f]{40}$/i.test(address);
 };
 
-Vue.prototype.$initDrizzle = initDrizzle
-Vue.prototype.$formatDAI = formatDAI
-Vue.prototype.$isAddress = isAddress
-Vue.prototype.$relayer = relayer
+Vue.prototype.$onConnect = onConnect;
+Vue.prototype.$initDrizzle = initDrizzle;
+Vue.prototype.$formatDAI = formatDAI;
+Vue.prototype.$isAddress = isAddress;
+Vue.prototype.$relayer = relayer;
 
 new Vue({
   store,
   render: h => h(App)
-}).$mount('#app')
+}).$mount("#app");

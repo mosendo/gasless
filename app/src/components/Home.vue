@@ -128,7 +128,7 @@ export default {
             })            
         },
         connectWeb3 () {
-            this.$initDrizzle()
+            this.$onConnect()
         },
         connectToast() {
             this.$buefy.toast.open('Please connect your Web3 provider first.')
