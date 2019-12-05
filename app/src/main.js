@@ -28,7 +28,7 @@ Vue.config.productionTip = false
 
 function initDrizzle (customProvider) {
 
-  let url = "wss://kovan.infura.io/ws/v3/d12fc9464334437e8508de34b4fdce60"
+  let url = "wss://mainnet.infura.io/ws/v3/" + process.env.INFURA_ACCESS_KEY
 
   if(customProvider) {
     delete window.ethereum;

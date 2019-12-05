@@ -3,7 +3,7 @@ var PrivateKeyProvider = require("truffle-privatekey-provider");
 
 const privateKey = process.env.PRIVATEKEY;
 
-module.exports = {
+const config = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // to customize your Truffle configuration!
   contracts_build_directory: path.join(__dirname, "./app/contracts"),
@@ -25,16 +25,22 @@ module.exports = {
       host: "localhost",
       port: 9545,
       network_id: "*" // Match any network id
-    },
-    kovan: {
-      provider: new PrivateKeyProvider(privateKey, "https://kovan.infura.io/27e484dcd9e3efcfd25a83a78777cdf1/"),
-      network_id: 42,
-      skipDryRun: true
-    },
-    live: {
-      provider: new PrivateKeyProvider(privateKey, "https://mainnet.infura.io/27e484dcd9e3efcfd25a83a78777cdf1/"),
-      network_id: 1,
-      skipDryRun: true
     }
   }
 };
+
+if(privateKey) {
+  config.networks.kovan = {
+    provider: new PrivateKeyProvider(privateKey, "https://kovan.infura.io/27e484dcd9e3efcfd25a83a78777cdf1/"),
+    network_id: 42,
+    skipDryRun: true
+  }
+
+  config.networks.live = {
+    provider: new PrivateKeyProvider(privateKey, "https://mainnet.infura.io/27e484dcd9e3efcfd25a83a78777cdf1/"),
+    network_id: 1,
+    skipDryRun: true
+  }
+}
+
+module.exports = config;
