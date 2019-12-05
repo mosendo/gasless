@@ -57,8 +57,7 @@
         </section>
         <History/>
         <footer class="footer">
-            <p><a href="https://medium.com/@_TomHoward/gasless-by-mosendo-8e5e369c0278
-    ">About Gasless</a> | <a href="https://angel.co/company/mosendo/jobs">We're Hiring!</a> | <a href="https://github.com/mosendo/gasless">Github</a> | <a href="https://twitter.com/GetMosendo">Twitter</a></p>
+            <p><a href="https://medium.com/mosendo/gasless-by-mosendo-3030f5e99099">About Gasless</a> | <a href="https://angel.co/company/mosendo/jobs">We're Hiring!</a> | <a href="https://github.com/mosendo/gasless">Github</a> | <a href="https://twitter.com/GetMosendo">Twitter</a> | <a href="https://mosendo.com/">What is Mosendo?</a></p>
             <p><em><small>Disclaimer: this code is in beta and has not been audited. Use at your own risk.</small></em></p>
         </footer>
     </div>
