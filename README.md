@@ -3,13 +3,13 @@
 Gasless is a non-custodial wallet for MCD Dai native meta-transactions.
 It leverages Dai's new approve by signature feature (aka permit function).
 
-This repo contains and contracts and the frontend of the Gasless wallet
+This repo contains contracts and the frontend of the Gasless wallet
 
 ## Truffle Contracts
 
 You need the Truffle Suite installed on your machine.
 ```sh
-npm i -g truffle
+sudo npm i -g truffle
 ```
 
 ### Development
@@ -34,7 +34,7 @@ truffle migrate --network="live"
 
 ## Vue App
 
-The vue app is located at the [/app]() directory
+The vue app is located at the [/app](/app) directory
 ```sh
 cd app/
 ```
@@ -52,4 +52,4 @@ export INFURA_ACCESS_KEY="YOURACCESSKEYHERE"
 ```sh
 npm run build
 ```
-The bundle will be placed at [/app/dist]()
+The bundle will be placed at [/app/dist](/app/dist)
