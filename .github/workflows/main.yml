@@ -1,28 +1,29 @@
-name: Firebase Deploy
+name: Firebase Hosting
 on:
   push:
     branches: 
-      - master
+     - master
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
     - uses: actions/checkout@v1
-    - name: Move to Vue app folder
-      run: cd app/
-    - name: Install build essentials
-      run:  sudo apt-get install build-essential
     - name: Install Dependencies
+      working-directory: ./app
       run: npm install
     - name: Build
+      working-directory: ./app
       run: npm run build
     - name: Archive Production Artifact
       uses: actions/upload-artifact@master
       with:
         name: dist
-        path: dist
+        path: app/dist
   
   deploy:
     name: Deploy
@@ -35,10 +36,12 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: dist
+          path: app/dist
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
         env:
+          PROJECT_PATH: ./app
           PROJECT_ID: gasless-20d13
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
