@@ -2,7 +2,7 @@ name: Firebase Hosting
 on:
   push:
     branches: 
-      - gh-actions
+     - master
 
 jobs:
   build:
