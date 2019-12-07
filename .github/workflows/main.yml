@@ -2,27 +2,28 @@ name: Firebase Deploy
 on:
   push:
     branches: 
-      - master
+      - gh-actions
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
     - uses: actions/checkout@v1
-    - name: Move to Vue app folder
-      run: cd app/
-    - name: Install build essentials
-      run:  sudo apt-get install build-essential
     - name: Install Dependencies
+      working-directory: ./app
       run: npm install
     - name: Build
+      working-directory: ./app
       run: npm run build
     - name: Archive Production Artifact
       uses: actions/upload-artifact@master
       with:
         name: dist
-        path: dist
+        path: app/dist
   
   deploy:
     name: Deploy
