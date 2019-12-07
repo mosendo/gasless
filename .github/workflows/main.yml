@@ -42,5 +42,6 @@ jobs:
         with:
           args: deploy --only hosting
         env:
+          PROJECT_PATH: ./app
           PROJECT_ID: gasless-20d13
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
