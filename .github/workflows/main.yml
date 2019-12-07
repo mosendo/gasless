@@ -12,6 +12,8 @@ jobs:
     - uses: actions/checkout@v1
     - name: Move to Vue app folder
       run: cd app/
+    - name: Install build essentials
+      run:  sudo apt-get install build-essential
     - name: Install Dependencies
       run: npm install
     - name: Build
