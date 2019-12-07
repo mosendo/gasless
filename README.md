@@ -7,6 +7,10 @@ Read more about the making of Gasless: https://medium.com/mosendo/gasless-by-mos
 
 This repo contains contracts and the frontend of the Gasless wallet
 
+## Use the Gasless relayer in your own project
+
+See https://www.npmjs.com/package/gasless
+
 ## Truffle Contracts
 
 You need the Truffle Suite installed on your machine.
