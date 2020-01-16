@@ -9,7 +9,7 @@ This repo contains contracts and the frontend of the Gasless wallet
 
 ## Use the Gasless relayer in your own project
 
-See https://www.npmjs.com/package/gasless
+See https://github.com/mosendo/gasless.js
 
 ## Truffle Contracts
 
